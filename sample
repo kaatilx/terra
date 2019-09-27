@@ -1,0 +1,8 @@
+
+resouce "aws_instance" "terra-lab" {
+  ami = "ami-06f1fab1ab342f0f7"
+  instance_type = "t2.micro"
+  tags{
+    Name = "terra-lab-instance"
+  }
+}
