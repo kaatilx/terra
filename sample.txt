@@ -1,0 +1,33 @@
+
+resouce "aws_instance" "terra-lab" {
+  ami = "ami-06f1fab1ab342f0f7"
+  instance_type = "t2.micro"
+  tags{
+    Name = "terra-lab-instance"
+  }
+}
+_______________________________________________
+
+resource "aws_subnet" "subnet1" {
+  cidr_block = "${aws_vpc.terra.id}"
+  vpc_id = "${aws_vpc..terra.id}"
+
+}
+
+
+_________________________________________________
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+  }
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["self"]
+}
